@@ -1,5 +1,7 @@
 package give.restaurant4;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -15,11 +17,18 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     RecyclerView recyclerView1;
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +40,10 @@ public class MainActivity extends AppCompatActivity
 
 
         MyAdapter adapter = new MyAdapter();
+
+        recyclerView1.setItemViewCacheSize(20);
+        recyclerView1.setDrawingCacheEnabled(true);
+        recyclerView1.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
 
         recyclerView1.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
 
@@ -45,6 +58,8 @@ public class MainActivity extends AppCompatActivity
                         .setAction("Action", null).show();
 
                 recyclerView1.getLayoutManager().scrollToPosition(12);
+
+               // Toast.makeText(MainActivity.this,""+ orders,Toast.LENGTH_SHORT).show();
                 //LinearLayoutManager.scrollToPositionWithOffset(2, 20);
             };
         });
@@ -115,4 +130,5 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }
