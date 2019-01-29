@@ -2,6 +2,7 @@ package give.restaurant4;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -50,17 +51,36 @@ public class MainActivity extends AppCompatActivity
         recyclerView1.setAdapter(adapter);
 
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();*/
 
-                recyclerView1.getLayoutManager().scrollToPosition(12);
+                recyclerView1.getLayoutManager().scrollToPosition(0);
+            };
+        });
 
-               // Toast.makeText(MainActivity.this,""+ orders,Toast.LENGTH_SHORT).show();
-                //LinearLayoutManager.scrollToPositionWithOffset(2, 20);
+        FloatingActionButton fab1 =  findViewById(R.id.fab1);
+        fab1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recyclerView1.getLayoutManager().scrollToPosition(10);
+            };
+        });
+        FloatingActionButton fab2 =  findViewById(R.id.fab2);
+        fab2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recyclerView1.getLayoutManager().scrollToPosition(16);
+            };
+        });
+        FloatingActionButton fab3 =  findViewById(R.id.fab3);
+        fab3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recyclerView1.getLayoutManager().scrollToPosition(20);
             };
         });
 
@@ -100,8 +120,9 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
-        }
+            Intent intent = new Intent(this, AddressForm.class);
+            startActivity(intent);
+            return true;        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -131,4 +152,14 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+
+    public void dismissListener(View view) {
+        //Toast.makeText(this,"dfdf",Toast.LENGTH_LONG).show();
+        MyAdapter.settingDialog.cancel();
+    }
+
+    public void ordererClick(View view) {
+        Intent intent = new Intent(this,FinalOrder.class);
+        startActivity(intent);
+    }
 }
