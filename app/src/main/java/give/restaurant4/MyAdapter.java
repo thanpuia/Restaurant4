@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -26,10 +27,13 @@ import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
 
 import java.util.ArrayList;
 
+import static give.restaurant4.FinalOrder.arrayAdapter;
+import static give.restaurant4.FinalOrder.listView;
+
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
     public static ArrayList<String> orders = new ArrayList<>();
-    ;
-     public static Dialog settingDialog;
+
+    public static Dialog settingDialog;
     int[] menuItemName = new int[]{
              R.string.mixed_chow_half ,  R.string.mixed_chow_full ,     R.string.mushroom_chow ,
              R.string.chow_egg_top ,     R.string.fried_chow_egg ,     R.string.fried_chow_chicken ,
@@ -78,7 +82,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
         holder.imageViewMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(holder.itemView.getContext()," " + i,Toast.LENGTH_LONG).show();
+                //Toast.makeText(holder.itemView.getContext()," " + i,Toast.LENGTH_LONG).show();
                 showDialogInImage(i,holder);
             }
         });
@@ -87,7 +91,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
             @Override
             public void onValueChange(ElegantNumberButton view, int oldValue, int newValue) {
                 elegentNumber=newValue;
-                Toast.makeText(holder.itemView.getContext()," old:"+oldValue+ " new:"+newValue,Toast.LENGTH_SHORT).show();
+                //Toast.makeText(holder.itemView.getContext()," old:"+oldValue+ " new:"+newValue,Toast.LENGTH_SHORT).show();
             }
         });
         holder.addButton.setOnClickListener(new View.OnClickListener() {
@@ -104,8 +108,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
                 builder.setMessage("Are you sure?"+
                                 "\n"+ s +" X"+elegentNumber);
 
-                String s2 = s+" X"+elegentNumber;
-orders.add(s2);
+                final String s2 = s+" X"+elegentNumber;
+
         elegentNumber = 1;
                 //elegantNumberButton.setNumber("1");
 
@@ -113,6 +117,7 @@ orders.add(s2);
                         public void onClick(DialogInterface dialog, int id) {
                             // User clicked OK button
                             Toast.makeText(holder.itemView.getContext()," "+orders,Toast.LENGTH_SHORT).show();
+                            orders.add(s2);
                         }
                     });
                     builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -120,6 +125,7 @@ orders.add(s2);
                             // User cancelled the dialog
                         }
                     });
+
 // Set other dialog properties
 
 
@@ -168,6 +174,33 @@ orders.add(s2);
 
         }
     }
+
+    public static void orderEditor(final View view, final int position) {
+
+         AlertDialog.Builder builder;
+
+        builder = new AlertDialog.Builder(view.getContext());
+        builder.setPositiveButton("Remove", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                MyAdapter.orders.remove(position);
+
+
+                arrayAdapter= new ArrayAdapter(view.getContext(),android.R.layout.simple_list_item_1,MyAdapter.orders);
+                listView.setAdapter(arrayAdapter);
+
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User cancelled the dialog
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+
 
 
 }

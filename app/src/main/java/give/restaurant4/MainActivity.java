@@ -17,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -26,6 +27,9 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     RecyclerView recyclerView1;
+    Button button,fab,fab1,fab2,fab3;
+    int  fabCounter=2;
+
 
 
 
@@ -39,7 +43,6 @@ public class MainActivity extends AppCompatActivity
 
         recyclerView1 = findViewById(R.id.recyclerView1);
 
-
         MyAdapter adapter = new MyAdapter();
 
         recyclerView1.setItemViewCacheSize(20);
@@ -51,7 +54,17 @@ public class MainActivity extends AppCompatActivity
         recyclerView1.setAdapter(adapter);
 
 
-        FloatingActionButton fab = findViewById(R.id.fab);
+
+        fab = findViewById(R.id.fab);
+        fab1 =  findViewById(R.id.fab1);
+        fab2 =  findViewById(R.id.fab2);
+        fab3 =  findViewById(R.id.fab3);
+
+        fab.setVisibility(View.GONE);
+        fab1.setVisibility(View.GONE);
+        fab2.setVisibility(View.GONE);
+        fab3.setVisibility(View.GONE);
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,26 +75,46 @@ public class MainActivity extends AppCompatActivity
             };
         });
 
-        FloatingActionButton fab1 =  findViewById(R.id.fab1);
         fab1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                recyclerView1.getLayoutManager().scrollToPosition(10);
-            };
-        });
-        FloatingActionButton fab2 =  findViewById(R.id.fab2);
-        fab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 recyclerView1.getLayoutManager().scrollToPosition(16);
             };
         });
-        FloatingActionButton fab3 =  findViewById(R.id.fab3);
+        fab2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recyclerView1.getLayoutManager().scrollToPosition(9);
+            };
+        });
         fab3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                recyclerView1.getLayoutManager().scrollToPosition(20);
+                recyclerView1.getLayoutManager().scrollToPosition(19);
+
             };
+        });
+        // Create the show or hide menu button
+        button=findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(fabCounter%2 == 0){
+                    fab.setVisibility(View.GONE);
+                    fab1.setVisibility(View.GONE);
+                    fab2.setVisibility(View.GONE);
+                    fab3.setVisibility(View.GONE);
+                }
+                else{
+                    fab.setVisibility(View.VISIBLE);
+                    fab1.setVisibility(View.VISIBLE);
+                    fab2.setVisibility(View.VISIBLE);
+                    fab3.setVisibility(View.VISIBLE);
+                }
+                fabCounter=fabCounter+1;
+
+            }
         });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

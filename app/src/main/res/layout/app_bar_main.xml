@@ -23,48 +23,89 @@
     <include
         android:id="@+id/include"
         layout="@layout/content_main"
-        app:layout_anchor="@+id/fab1"
+        android:layout_height="678dp"
+
         app:layout_anchorGravity="left|center" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+    <LinearLayout
+        android:id="@+id/menuu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@drawable/chow_button" />
+        android:layout_gravity="bottom|center"
+        android:orientation="vertical"
+        android:animateLayoutChanges="true">
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:layout_anchor="@+id/include"
-        app:layout_anchorGravity="bottom|center"
-        app:srcCompat="@drawable/rice_button"
-         />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:animateLayoutChanges="true"
+            >
+            <Button
+                android:id="@+id/fab"
+                android:layout_width="@dimen/menu_button_width"
+                android:layout_height="@dimen/menu_button_height"
+                android:background="@drawable/button"
+                android:text="Chow"
+                android:textAllCaps="false"
+                android:layout_margin="@dimen/menu_margin"
+
+                />
+            <Button
+                android:id="@+id/fab1"
+                android:layout_width="@dimen/menu_button_width"
+                android:layout_height="@dimen/menu_button_height"
+                android:background="@drawable/button"
+                android:text="Chopsuey"
+                android:textAllCaps="false"
+                android:layout_margin="@dimen/menu_margin"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:animateLayoutChanges="true">
+
+            <Button
+                android:id="@+id/fab2"
+                android:layout_width="@dimen/menu_button_width"
+                android:layout_height="@dimen/menu_button_height"
+                android:background="@drawable/button"
+                android:text="Chowmain"
+                android:textAllCaps="false"
+                android:layout_margin="@dimen/menu_margin"
+                />
+            <Button
+                android:id="@+id/fab3"
+                android:layout_width="@dimen/menu_button_width"
+                android:layout_height="@dimen/menu_button_height"
+                android:background="@drawable/button"
+                android:text="Noodles"
+                android:textAllCaps="false"
+                android:layout_margin="@dimen/menu_margin"
+
+                />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="50dp" />
 
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab2"
-        android:layout_width="wrap_content"
-        android:layout_height="178dp"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:layout_anchor="@+id/include"
-        app:layout_anchorGravity="left|bottom"
-        app:srcCompat="@drawable/chopsuey_button"
-        />
+    </LinearLayout>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab3"
-        android:layout_width="wrap_content"
-        android:layout_height="178dp"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:layout_anchor="@+id/include"
-        app:layout_anchorGravity="right|center"
-        app:srcCompat="@drawable/noodles_button"
-        />
+    <Button
+        android:id="@+id/button"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:background="@drawable/button"
+        android:text="Menu +"
+        android:textAllCaps="false"
+        app:layout_anchor="@+id/menuu"
+
+        app:layout_anchorGravity="top|center" />
+
+
 </android.support.design.widget.CoordinatorLayout>
