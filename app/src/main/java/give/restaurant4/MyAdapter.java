@@ -32,7 +32,9 @@ import static give.restaurant4.FinalOrder.listView;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
     public static ArrayList<String> orders = new ArrayList<>();
+    public static ArrayList<Integer> orders_amount = new ArrayList<>();
 
+    int amount = 40;
     public static Dialog settingDialog;
     int[] menuItemName = new int[]{
              R.string.mixed_chow_half ,  R.string.mixed_chow_full ,     R.string.mushroom_chow ,
@@ -87,10 +89,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
             }
         });
 //
+
         holder.elegantNumberButton.setOnValueChangeListener(new ElegantNumberButton.OnValueChangeListener() {
             @Override
             public void onValueChange(ElegantNumberButton view, int oldValue, int newValue) {
                 elegentNumber=newValue;
+
                 //Toast.makeText(holder.itemView.getContext()," old:"+oldValue+ " new:"+newValue,Toast.LENGTH_SHORT).show();
             }
         });
@@ -99,6 +103,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
             @Override
             public void onClick(View view) {
                 Log.i("TAG", "Index numer: " + i);
+
 
                 //Toast.makeText(holder.itemView.getContext(),"",Toast.LENGTH_LONG).show();
                 String s = String.valueOf(holder.itemView.getContext().getText(menuItemName[i]));
@@ -109,15 +114,17 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
                                 "\n"+ s +" X"+elegentNumber);
 
                 final String s2 = s+" X"+elegentNumber;
-
-        elegentNumber = 1;
+                final int singleOrderAmount = amount*elegentNumber;
+               //
                 //elegantNumberButton.setNumber("1");
 
                 builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             // User clicked OK button
-                            Toast.makeText(holder.itemView.getContext()," "+orders,Toast.LENGTH_SHORT).show();
+                         //   Toast.makeText(holder.itemView.getContext()," "+orders,Toast.LENGTH_SHORT).show();
                             orders.add(s2);
+                            orders_amount.add(singleOrderAmount);
+                            Log.i("TAG","Order Amount: " +orders_amount);
                         }
                     });
                     builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -125,13 +132,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
                             // User cancelled the dialog
                         }
                     });
-
-// Set other dialog properties
-
-
 // Create the AlertDialog
                     AlertDialog dialog = builder.create();
                     dialog.show();
+                holder.elegantNumberButton.setNumber(String.valueOf(1));
+                elegentNumber=1;
+
 
             }
         });
@@ -175,7 +181,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
         }
     }
 
-    public static void orderEditor(final View view, final int position) {
+    public static void orderEditor(final
+                                   View view, final int position) {
 
          AlertDialog.Builder builder;
 
@@ -183,10 +190,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
         builder.setPositiveButton("Remove", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                MyAdapter.orders.remove(position);
+                orders.remove(position);
+                orders_amount.remove(position);
 
+                String newOrderAmount = MainActivity.totalAmount();
+                FinalOrder.orderAmountTextView.setText(newOrderAmount);
 
-                arrayAdapter= new ArrayAdapter(view.getContext(),android.R.layout.simple_list_item_1,MyAdapter.orders);
+                arrayAdapter= new ArrayAdapter(view.getContext(),android.R.layout.simple_list_item_1,orders);
                 listView.setAdapter(arrayAdapter);
 
             }

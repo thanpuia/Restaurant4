@@ -8,6 +8,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -193,6 +194,21 @@ public class MainActivity extends AppCompatActivity
 
     public void ordererClick(View view) {
         Intent intent = new Intent(this,FinalOrder.class);
+        String totAmountString = totalAmount();
+        intent.putExtra("orderAmount",totAmountString);
         startActivity(intent);
     }
+
+    public static String totalAmount() {
+        int totAmount=0;
+        Log.i("TAG","order Amount new Price: "+ MyAdapter.orders_amount);
+        for(int i=0; i<MyAdapter.orders_amount.size();i++) {
+
+            totAmount= MyAdapter.orders_amount.get(i) +totAmount;
+        }
+        String totAmountString = String.valueOf(totAmount);
+
+        return totAmountString;
+    }
+
 }
