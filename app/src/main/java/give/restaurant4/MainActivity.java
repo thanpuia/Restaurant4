@@ -18,11 +18,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import static give.restaurant4.FinalOrder.arrayAdapter;
+import static give.restaurant4.FinalOrder.listView;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -166,17 +170,23 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
+        if (id == R.id.menu_pfd) {
+            Toast.makeText(this, "Menu downloading...", Toast.LENGTH_SHORT).show();
+
         } else if (id == R.id.nav_gallery) {
+            Toast.makeText(this, "Gallery will be shown in the full version", Toast.LENGTH_SHORT).show();
 
-        } else if (id == R.id.nav_slideshow) {
+         } else if (id == R.id.delivery_address) {
+            Intent intent = new Intent(this, AddressForm.class);
+            startActivity(intent);
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.contact_us) {
+            dialog();
 
         } else if (id == R.id.nav_share) {
-
+            Toast.makeText(this, "Will be functioning in the full version", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_send) {
+            Toast.makeText(this, "Will be functioning in the full version", Toast.LENGTH_SHORT).show();
 
         }
 
@@ -190,7 +200,7 @@ public class MainActivity extends AppCompatActivity
         MyAdapter.settingDialog.cancel();
     }
 
-    public void ordererClick(View view) {
+    public void orderedClick(View view) {
         Intent intent = new Intent(this,FinalOrder.class);
         String totAmountString = totalAmount();
         intent.putExtra("orderAmount",totAmountString);
@@ -209,4 +219,24 @@ public class MainActivity extends AppCompatActivity
         return totAmountString;
     }
 
+    public void dialog(){
+        AlertDialog.Builder builder;
+
+        builder = new AlertDialog.Builder(this);
+        builder.setMessage(R.string.contact_us);
+        builder.setPositiveButton("Call", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Toast.makeText(getApplicationContext(),"Calling feature will be added soon",Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User cancelled the dialog
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
 }

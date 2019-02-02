@@ -23,8 +23,7 @@
     <include
         android:id="@+id/include"
         layout="@layout/content_main"
-        android:layout_height="678dp"
-
+        android:layout_height="match_parent"
         app:layout_anchorGravity="left|center" />
 
     <LinearLayout
@@ -45,7 +44,7 @@
                 android:id="@+id/fab"
                 android:layout_width="@dimen/menu_button_width"
                 android:layout_height="@dimen/menu_button_height"
-                android:background="@drawable/button"
+                android:background="@drawable/new_menu"
                 android:text="Chow"
                 android:textAllCaps="false"
                 android:layout_margin="@dimen/menu_margin"
@@ -55,7 +54,7 @@
                 android:id="@+id/fab1"
                 android:layout_width="@dimen/menu_button_width"
                 android:layout_height="@dimen/menu_button_height"
-                android:background="@drawable/button"
+                android:background="@drawable/new_menu"
                 android:text="Chopsuey"
                 android:textAllCaps="false"
                 android:layout_margin="@dimen/menu_margin"/>
@@ -71,7 +70,7 @@
                 android:id="@+id/fab2"
                 android:layout_width="@dimen/menu_button_width"
                 android:layout_height="@dimen/menu_button_height"
-                android:background="@drawable/button"
+                android:background="@drawable/new_menu"
                 android:text="Chowmain"
                 android:textAllCaps="false"
                 android:layout_margin="@dimen/menu_margin"
@@ -80,7 +79,7 @@
                 android:id="@+id/fab3"
                 android:layout_width="@dimen/menu_button_width"
                 android:layout_height="@dimen/menu_button_height"
-                android:background="@drawable/button"
+                android:background="@drawable/new_menu"
                 android:text="Noodles"
                 android:textAllCaps="false"
                 android:layout_margin="@dimen/menu_margin"
@@ -100,7 +99,8 @@
         android:layout_width="100dp"
         android:layout_height="30dp"
         android:layout_gravity="center"
-        android:background="@drawable/button"
+        android:layout_margin="12dp"
+        android:background="@drawable/new_menu"
         android:text="Menu +"
         android:textAllCaps="false"
         app:layout_anchor="@+id/menuu"

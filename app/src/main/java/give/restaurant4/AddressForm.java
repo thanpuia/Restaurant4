@@ -17,6 +17,7 @@ public class AddressForm extends AppCompatActivity {
     EditText userName, shopName, userAddress, userPhone;
     public String userNameStr, shopNameStr, userAddressStr, userPhoneStr;
 
+    public static String userFullAddress;
     public SharedPreferences sharedPreferences;
     public static String sharedUserName,sharedShopName,sharedUserAddress,sharedUserPhone;
 
@@ -36,7 +37,6 @@ public class AddressForm extends AppCompatActivity {
             }
         });
 
-
         sharedPreferences = this.getSharedPreferences("com.example.root.restaurant2", Context.MODE_PRIVATE);
 
         userName = findViewById(R.id.userName);
@@ -53,6 +53,8 @@ public class AddressForm extends AppCompatActivity {
         shopName.setText(sharedShopName);
         userAddress.setText(sharedUserAddress);
         userPhone.setText(sharedUserPhone);
+
+        userFullAddress =sharedUserName +"\n"+ sharedShopName+"\n"+sharedUserAddress+"\n"+sharedUserPhone;
     }
 
     public void addressSaveClick(View view) {
@@ -62,12 +64,13 @@ public class AddressForm extends AppCompatActivity {
         userAddressStr = String.valueOf(userAddress.getText());
         userPhoneStr = String.valueOf(userPhone.getText());
 
+        userFullAddress = userNameStr +"\n"+shopNameStr +"\n"+userAddressStr +"\n"+userPhoneStr;
         if( !userNameStr.equals("") && !shopNameStr.equals("") &&
                 !userAddressStr.equals("") && !userPhoneStr.equals("")){
             Toast.makeText(this,"evetuthing is filled",Toast.LENGTH_SHORT).show();
 
             //PUT THE USER ADDRESS IN THE SHARED-PREFERENCES
-            sharedPreferences.edit().putString("userName", userAddressStr).apply();
+            sharedPreferences.edit().putString("userName", userNameStr).apply();
             sharedPreferences.edit().putString("shopName",shopNameStr).apply();
             sharedPreferences.edit().putString("userAddress",userAddressStr).apply();
             sharedPreferences.edit().putString("userPhone", userPhoneStr).apply();

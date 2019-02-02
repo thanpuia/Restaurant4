@@ -2,8 +2,8 @@
 <string name="app_name">Restaurant4</string>
 <string name="navigation_drawer_open">Open navigation drawer</string>
 <string name="navigation_drawer_close">Close navigation drawer</string>
-<string name="nav_header_title">Android Studio</string>
-<string name="nav_header_subtitle">android.studio@android.com</string>
+<string name="nav_header_title">Jerry\'s The Restaurant</string>
+<string name="nav_header_subtitle">Electric Veng, Aizawl.\nNear Power House, Mob: 096158 09904</string>
 <string name="nav_header_desc">Navigation header</string>
 <string name="action_settings">Settings</string>
 
@@ -42,6 +42,8 @@
 <string name="fried_rice_chicken">Fried Rice Chicken</string>
 <string name="fried_rice_beef">Fried Rice Beef</string>
 <string name="fried_rice_pork">Fried Rice Pork</string>
+
+    <string name="contact_us">Jerry\'s The Restaurant \nElectric Veng, Aizawl, Mizoram. \nNear Power House\n Mobile: 096158 09904</string>
 
 </resources>
     <!--<string name="mixed_chow_half">Mixed Chow Half \n Rs.</string>

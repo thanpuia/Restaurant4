@@ -32,6 +32,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
     public static ArrayList<String> orders = new ArrayList<>();
     public static ArrayList<Integer> orders_amount = new ArrayList<>();
 
+    boolean addDanghmetNgeHmetLoEnna;
     public int DEFAULT_ELEGANT_NUMBER = 1;
 
     int[] amount = new int[] {60,120,80,
@@ -90,6 +91,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
     @Override
     public void onBindViewHolder(@NonNull final MyAdapter.MyHolder holder, final int i) {
 
+
+        //holder.imageViewDialog.setImageResource(menuImage[i]);
         String itemNameDisplay =menuItemName[i]+String.valueOf(amount[i]);
         Log.i("TAG","menuItemname: "+menuItemName[i]+" amount: "+ amount[i]);
         holder.textView_MenuItem.setText(menuItemName[i]);
@@ -103,19 +106,33 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
             }
         });
 
-        holder.elegantNumberButton.setOnValueChangeListener(new ElegantNumberButton.OnValueChangeListener() {
-            @Override
-            public void onValueChange(ElegantNumberButton view, int oldValue, int newValue) {
-                elegentNumber=newValue;
-
-                //Toast.makeText(holder.itemView.getContext()," old:"+oldValue+ " new:"+newValue,Toast.LENGTH_SHORT).show();
-            }
-        });
         holder.addButton.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View view) {
                 Log.i("TAG", "Index numer: " + i);
+
+                holder.elegantNumberButton.setOnValueChangeListener(new ElegantNumberButton.OnValueChangeListener() {
+                    @Override
+                    public void onValueChange(ElegantNumberButton view, int oldValue, int newValue) {
+
+                        elegentNumber=newValue;
+                        addDanghmetNgeHmetLoEnna = true;
+
+                       // holder.elegantNumberButton.setNumber(String.valueOf(1));
+                        //Toast.makeText(holder.itemView.getContext()," old:"+oldValue+ " new:"+newValue,Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                if(!addDanghmetNgeHmetLoEnna)
+                    elegentNumber= Integer.parseInt(holder.elegantNumberButton.getNumber());
+
+//                //NUMBER OF PLATE A INCREASE VE VAK A, ADD BUTTON DANG A HMET LEH TAK A LO PUI TU TUR
+//                if(addDanghmetNgeHmetLoEnna == i){
+//                    Log.i("Tag","a dang a hmet loe");
+//                }
+//                else Log.i("Tag","A dang a hmettt!!!");
+//
 
 
                 //Toast.makeText(holder.itemView.getContext(),"",Toast.LENGTH_LONG).show();
@@ -129,6 +146,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
                 //COMBINATION OF ITEM NAME + PRICE + X + NUMBER OF PLATE (this is for showing in the final order page
                 final int singleOrderAmount = amount[i]*elegentNumber;
                 final String singleItemOrder = s+ "\nRs."+amount[i]+" X "+elegentNumber +"= "+" Rs."+singleOrderAmount;
+
 
                 // Add the buttons
 //                builder.setMessage("Are you sure?"+
@@ -169,13 +187,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
         });
     }
 
+    //METHOD FOR SHOWING THE ITEM IMAGE
     private void showDialogInImage(int i, MyHolder holder) {
 
         LayoutInflater inflater = (LayoutInflater) holder.itemView.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         settingDialog = new Dialog(holder.itemView.getContext());
         settingDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        settingDialog.setContentView(inflater.inflate(R.layout.image_layout, null));
+        settingDialog.setContentView(inflater.inflate(R.layout.image_layout,null));
 
         settingDialog.show();
 
@@ -192,9 +211,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
         Button addButton;
         ImageView imageViewMenu;
         ElegantNumberButton elegantNumberButton;
+        ImageView imageViewDialog;
 
         public MyHolder(View itemView) {
             super(itemView);
+
+            this.imageViewDialog = itemView.findViewById(R.id.dialogImageView);
 
             this.textView_MenuItem = itemView.findViewById(R.id.textViewMenuItem);
             this.addButton=  itemView.findViewById(R.id.addButton);
@@ -218,7 +240,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
                 orders_amount.remove(position);
 
                 String newOrderAmount = MainActivity.totalAmount();
-                FinalOrder.orderTotalAmountTextView.setText(newOrderAmount);
+                //FinalOrder.orderTotalAmountTextView.setText(newOrderAmount);
+
+                FinalOrder.finalOrder.setText("CONFIRM/ORDER (Rs. "+ newOrderAmount+")");
 
                 arrayAdapter= new ArrayAdapter(view.getContext(),android.R.layout.simple_list_item_1,orders);
                 listView.setAdapter(arrayAdapter);
