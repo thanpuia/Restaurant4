@@ -24,9 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
-
 import java.util.ArrayList;
-
 import static give.restaurant4.FinalOrder.arrayAdapter;
 import static give.restaurant4.FinalOrder.listView;
 
@@ -34,13 +32,26 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
     public static ArrayList<String> orders = new ArrayList<>();
     public static ArrayList<Integer> orders_amount = new ArrayList<>();
 
-    int amount = 40;
+    public int DEFAULT_ELEGANT_NUMBER = 1;
+
+    int[] amount = new int[] {60,120,80,
+                               70,60,60,
+                              60,60,50,
+                              90,90,90,
+
+                               90,90,80,
+                               120,120,80,
+                                70,70,70,
+                                 70};
+
     public static Dialog settingDialog;
+
     int[] menuItemName = new int[]{
              R.string.mixed_chow_half ,  R.string.mixed_chow_full ,     R.string.mushroom_chow ,
              R.string.chow_egg_top ,     R.string.fried_chow_egg ,     R.string.fried_chow_chicken ,
              R.string.fried_chow_beef ,  R.string.fried_chow_pork ,    R.string.veg_fried_chow ,
              R.string.chowmein_egg ,     R.string.chowmein_chicken ,   R.string.chowmein_beef ,
+
              R.string.chowmein_pork ,    R.string.chowmein_veg , R.string.hakka_noodle ,
              R.string.american_chopsuey ,R.string.chinese_chopsuey ,   R.string.jerrys_special_chopsuey ,
              R.string.jerrys_special_chow ,R.string.noodle_soup_chicken ,R.string.noodle_soup_beef ,
@@ -51,17 +62,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
             R.drawable.chow_egg_top, R.drawable.chow_pork, R.drawable.chowmein_egg,
             R.drawable.american_chopseuy,     R.drawable.fired_rice_mixed,      R.drawable.chow_pork,
             R.drawable.chowmein_egg,  R.drawable.chowmein,R.drawable.chowmein_egg,
+
             R.drawable.chowmein,    R.drawable.chowmein_egg,       R.drawable.chowmein_egg,
             R.drawable.american_chopseuy,R.drawable.chinese_chopsuey,   R.drawable.american_chopseuy,
             R.drawable.chinese_chopsuey,    R.drawable.rice,        R.drawable.noodles_3,
             R.drawable.chow_egg_top,R.drawable.noodles_1,  R.drawable.noodles_2,
             R.drawable.noodles_3};
 
-     int elegentNumber=1;
-
+     int elegentNumber=DEFAULT_ELEGANT_NUMBER;
 
     @NonNull
     @Override
+
     public MyAdapter.MyHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.model,viewGroup,false);
         MyHolder holder = new MyHolder(v);
@@ -78,8 +90,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
     @Override
     public void onBindViewHolder(@NonNull final MyAdapter.MyHolder holder, final int i) {
 
+        String itemNameDisplay =menuItemName[i]+String.valueOf(amount[i]);
+        Log.i("TAG","menuItemname: "+menuItemName[i]+" amount: "+ amount[i]);
         holder.textView_MenuItem.setText(menuItemName[i]);
-//
+        holder.textView_MenuItemPrice.setText("Rs."+String.valueOf(amount[i]));
         holder.imageViewMenu.setImageResource(menuImage[i]);
         holder.imageViewMenu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,7 +102,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
                 showDialogInImage(i,holder);
             }
         });
-//
 
         holder.elegantNumberButton.setOnValueChangeListener(new ElegantNumberButton.OnValueChangeListener() {
             @Override
@@ -108,23 +121,37 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
                 //Toast.makeText(holder.itemView.getContext(),"",Toast.LENGTH_LONG).show();
                 String s = String.valueOf(holder.itemView.getContext().getText(menuItemName[i]));
 
-                    AlertDialog.Builder builder = new AlertDialog.Builder(holder.itemView.getContext());
-// Add the buttons
-                builder.setMessage("Are you sure?"+
-                                "\n"+ s +" X"+elegentNumber);
 
-                final String s2 = s+" X"+elegentNumber;
-                final int singleOrderAmount = amount*elegentNumber;
-               //
+
+                //THESE ARE THE SETTING FOR DIALOG OF ADD BUTTON
+                AlertDialog.Builder builder = new AlertDialog.Builder(holder.itemView.getContext());
+
+                //COMBINATION OF ITEM NAME + PRICE + X + NUMBER OF PLATE (this is for showing in the final order page
+                final int singleOrderAmount = amount[i]*elegentNumber;
+                final String singleItemOrder = s+ "\nRs."+amount[i]+" X "+elegentNumber +"= "+" Rs."+singleOrderAmount;
+
+                // Add the buttons
+//                builder.setMessage("Are you sure?"+
+//                                "\n"+ s+ "\n"+amount[i] +" X "+elegentNumber +"= "+"Rs."+singleOrderAmount);
+                builder.setMessage("Are you sure?"+
+                        "\n"+ singleItemOrder);
+
+
+                Log.i("TAG","Single order amount: " +singleOrderAmount+"  \n"+"amount:"+amount[i]);
+
+                //
                 //elegantNumberButton.setNumber("1");
 
                 builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             // User clicked OK button
                          //   Toast.makeText(holder.itemView.getContext()," "+orders,Toast.LENGTH_SHORT).show();
-                            orders.add(s2);
+                            orders.add(singleItemOrder);
                             orders_amount.add(singleOrderAmount);
                             Log.i("TAG","Order Amount: " +orders_amount);
+
+                            //RETURN THE ELEGANT NUMBER TO 1 SO THAT OTHER ORDER CAN START AGAIN FROM ONE
+                            elegentNumber=1;
                         }
                     });
                     builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -135,13 +162,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
 // Create the AlertDialog
                     AlertDialog dialog = builder.create();
                     dialog.show();
-                holder.elegantNumberButton.setNumber(String.valueOf(1));
-                elegentNumber=1;
+               // holder.elegantNumberButton.setNumber(String.valueOf(1));
 
 
             }
         });
-
     }
 
     private void showDialogInImage(int i, MyHolder holder) {
@@ -161,14 +186,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
         return menuItemName.length;
     }
 
-
     class MyHolder extends RecyclerView.ViewHolder {
 
-        TextView textView_MenuItem;
+        TextView textView_MenuItem, textView_MenuItemPrice;
         Button addButton;
         ImageView imageViewMenu;
         ElegantNumberButton elegantNumberButton;
-
 
         public MyHolder(View itemView) {
             super(itemView);
@@ -177,10 +200,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
             this.addButton=  itemView.findViewById(R.id.addButton);
             this.imageViewMenu=  itemView.findViewById(R.id.imageViewMenu);
             this.elegantNumberButton = itemView.findViewById(R.id.elegantNumber);
-
+            this.textView_MenuItemPrice = itemView.findViewById(R.id.textViewMenuItemPrice);
         }
     }
 
+    //THIS IS IN THE FINAL PAGE. FUNCTION FOR REMOVING ITEMS FROM THE FINAL ORDER
     public static void orderEditor(final
                                    View view, final int position) {
 
@@ -194,11 +218,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
                 orders_amount.remove(position);
 
                 String newOrderAmount = MainActivity.totalAmount();
-                FinalOrder.orderAmountTextView.setText(newOrderAmount);
+                FinalOrder.orderTotalAmountTextView.setText(newOrderAmount);
 
                 arrayAdapter= new ArrayAdapter(view.getContext(),android.R.layout.simple_list_item_1,orders);
                 listView.setAdapter(arrayAdapter);
-
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -209,8 +232,4 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
-
-
-
-
 }

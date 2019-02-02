@@ -21,7 +21,7 @@ public class FinalOrder extends Activity {
 
     public static ListView listView;
     public static ArrayAdapter arrayAdapter;
-    public static TextView orderAmountTextView;
+    public static TextView orderTotalAmountTextView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,14 +29,13 @@ public class FinalOrder extends Activity {
 
         Intent intent = getIntent();
         String amount = intent.getStringExtra("orderAmount");
-        orderAmountTextView = findViewById(R.id.orderAmount);
+        orderTotalAmountTextView = findViewById(R.id.orderAmount);
         listView = findViewById(R.id.list_item);
 
-         arrayAdapter= new ArrayAdapter(this,android.R.layout.simple_list_item_1,MyAdapter.orders);
+        arrayAdapter= new ArrayAdapter(this,android.R.layout.simple_list_item_1,MyAdapter.orders);
         listView.setAdapter(arrayAdapter);
 
-        orderAmountTextView.setText(amount);
-
+        orderTotalAmountTextView.setText(amount);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

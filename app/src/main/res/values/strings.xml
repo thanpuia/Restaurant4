@@ -1,43 +1,79 @@
 <resources>
-    <string name="app_name">Restaurant4</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+<string name="app_name">Restaurant4</string>
+<string name="navigation_drawer_open">Open navigation drawer</string>
+<string name="navigation_drawer_close">Close navigation drawer</string>
+<string name="nav_header_title">Android Studio</string>
+<string name="nav_header_subtitle">android.studio@android.com</string>
+<string name="nav_header_desc">Navigation header</string>
+<string name="action_settings">Settings</string>
 
-    <string name="mixed_chow_half">Mixed Chow Half \n Rs.40</string>
-    <string name="mixed_chow_full">Mixed Chow Full \n Rs.40</string>
-    <string name="mushroom_chow">Mushroom Chow \n Rs.40</string>
-    <string name="chow_egg_top">Choe Egg Top \n Rs.40</string>
-    <string name="fried_chow_egg">Fried Chow Egg \n Rs.40</string>
-    <string name="fried_chow_chicken">Fried Chow Chicken \n Rs.40</string>
-    <string name="fried_chow_beef">Fried Chow Beef \n Rs.40</string>
-    <string name="fried_chow_pork">Fried Chow Pork \n Rs.40</string>
-    <string name="veg_fried_chow">Veg Fried Chow Half \n Rs.40</string>
 
-    <string name="chowmein_egg">Chowmein Egg \n Rs.40</string>
-    <string name="chowmein_chicken">Chowmein Chicken \n Rs.40</string>
-    <string name="chowmein_beef">Chowmein Beef \n Rs.40</string>
-    <string name="chowmein_pork">Chowmein Pork \n Rs.40</string>
-    <string name="chowmein_veg">Chowmein Vegetable \n Rs.40</string>
-    <string name="hakka_noodle">Hakka Noodle \n Rs.40</string>
 
-    <string name="american_chopsuey">American Chopsuey \n Rs.40</string>
-    <string name="chinese_chopsuey">Chinese Chopsuey \n Rs.40</string>
-    <string name="jerrys_special_chopsuey">Jerry\'s Special Chopsuey \n Rs.40</string>
+<string name="mixed_chow_half">Mixed Chow Half</string>
+<string name="mixed_chow_full">Mixed Chow Full</string>
+<string name="mushroom_chow">Mushroom Chow</string>
+<string name="chow_egg_top">Choe Egg Top</string>
+<string name="fried_chow_egg">Fried Chow Egg</string>
+<string name="fried_chow_chicken">Fried Chow Chicken</string>
+<string name="fried_chow_beef">Fried Chow Beef</string>
+<string name="fried_chow_pork">Fried Chow Pork</string>
+<string name="veg_fried_chow">Veg Fried Chow Half</string>
 
-    <string name="jerrys_special_chow">Jerry\'s Special Chow \n Rs.40</string>
+<string name="chowmein_egg">Chowmein Egg</string>
+<string name="chowmein_chicken">Chowmein Chicken</string>
+<string name="chowmein_beef">Chowmein Beef</string>
+<string name="chowmein_pork">Chowmein Pork</string>
+<string name="chowmein_veg">Chowmein Vegetable</string>
+<string name="hakka_noodle">Hakka Noodle</string>
 
-    <string name="noodle_soup_chicken">Noodle Soup Chicken \n Rs.40</string>
-    <string name="noodle_soup_beef">Noodle Soup Beef \n Rs.40</string>
-    <string name="noodle_soup_pork">Noodle Soup Pork \n Rs.40</string>
-    <string name="mixed_rice_half">Mixed Rice Half \n Rs.40</string>
-    <string name="mixed_rice_full">Mixed Rice Full \n Rs.40</string>
-    <string name="rice_egg_top">Rice Egg Top \n Rs.40</string>
-    <string name="fried_rice_egg">Fried Rice Egg \n Rs.40</string>
-    <string name="fried_rice_chicken">Fried Rice Chicken \n Rs.40</string>
-    <string name="fried_rice_beef">Fried Rice Beef \n Rs.40</string>
-    <string name="fried_rice_pork">Fried Rice Pork \n Rs.40</string>
+<string name="american_chopsuey">American Chopsuey</string>
+<string name="chinese_chopsuey">Chinese Chopsuey</string>
+<string name="jerrys_special_chopsuey">Jerry\'s Special Chopsuey</string>
+
+<string name="jerrys_special_chow">Jerry\'s Special Chow</string>
+
+<string name="noodle_soup_chicken">Noodle Soup Chicken</string>
+<string name="noodle_soup_beef">Noodle Soup Beef</string>
+<string name="noodle_soup_pork">Noodle Soup Pork</string>
+<string name="mixed_rice_half">Mixed Rice Half</string>
+<string name="mixed_rice_full">Mixed Rice Full</string>
+<string name="rice_egg_top">Rice Egg Top</string>
+<string name="fried_rice_egg">Fried Rice Egg</string>
+<string name="fried_rice_chicken">Fried Rice Chicken</string>
+<string name="fried_rice_beef">Fried Rice Beef</string>
+<string name="fried_rice_pork">Fried Rice Pork</string>
+
 </resources>
+    <!--<string name="mixed_chow_half">Mixed Chow Half \n Rs.</string>
+        <string name="mixed_chow_full">Mixed Chow Full \n Rs.40</string>
+        <string name="mushroom_chow">Mushroom Chow \n Rs.40</string>
+        <string name="chow_egg_top">Choe Egg Top \n Rs.40</string>
+        <string name="fried_chow_egg">Fried Chow Egg \n Rs.40</string>
+        <string name="fried_chow_chicken">Fried Chow Chicken \n Rs.40</string>
+        <string name="fried_chow_beef">Fried Chow Beef \n Rs.40</string>
+        <string name="fried_chow_pork">Fried Chow Pork \n Rs.40</string>
+        <string name="veg_fried_chow">Veg Fried Chow Half \n Rs.40</string>
+
+        <string name="chowmein_egg">Chowmein Egg \n Rs.40</string>
+        <string name="chowmein_chicken">Chowmein Chicken \n Rs.40</string>
+        <string name="chowmein_beef">Chowmein Beef \n Rs.40</string>
+        <string name="chowmein_pork">Chowmein Pork \n Rs.40</string>
+        <string name="chowmein_veg">Chowmein Vegetable \n Rs.40</string>
+        <string name="hakka_noodle">Hakka Noodle \n Rs.40</string>
+
+        <string name="american_chopsuey">American Chopsuey \n Rs.40</string>
+        <string name="chinese_chopsuey">Chinese Chopsuey \n Rs.40</string>
+        <string name="jerrys_special_chopsuey">Jerry\'s Special Chopsuey \n Rs.40</string>
+
+        <string name="jerrys_special_chow">Jerry\'s Special Chow \n Rs.40</string>
+
+        <string name="noodle_soup_chicken">Noodle Soup Chicken \n Rs.40</string>
+        <string name="noodle_soup_beef">Noodle Soup Beef \n Rs.40</string>
+        <string name="noodle_soup_pork">Noodle Soup Pork \n Rs.40</string>
+        <string name="mixed_rice_half">Mixed Rice Half \n Rs.40</string>
+        <string name="mixed_rice_full">Mixed Rice Full \n Rs.40</string>
+        <string name="rice_egg_top">Rice Egg Top \n Rs.40</string>
+        <string name="fried_rice_egg">Fried Rice Egg \n Rs.40</string>
+        <string name="fried_rice_chicken">Fried Rice Chicken \n Rs.40</string>
+        <string name="fried_rice_beef">Fried Rice Beef \n Rs.40</string>
+        <string name="fried_rice_pork">Fried Rice Pork \n Rs.40</string>-->

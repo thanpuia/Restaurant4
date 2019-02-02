@@ -8,4 +8,35 @@
     <dimen name="menu_button_width">100dp</dimen>
     <dimen name="menu_button_height">30dp</dimen>
     <dimen name="menu_margin">10dp</dimen>
+    <dimen name="mixed_chow_half">60</dimen>
+    <dimen name="mixed_chow_full">120</dimen>
+    <dimen name="mushroom_chow">80</dimen>
+    <dimen name="chow_egg_top">70</dimen>
+    <dimen name="fried_chow_egg">60</dimen>
+    <dimen name="fried_chow_chicken">60</dimen>
+    <dimen name="fried_chow_beef">60</dimen>
+    <dimen name="fried_chow_pork">60</dimen>
+    <dimen name="veg_fried_chow">50</dimen>
+    <dimen name="chowmein_egg">90</dimen>
+    <dimen name="chowmein_chicken">90</dimen>
+    <dimen name="chowmein_beef">90</dimen>
+    <dimen name="chowmein_pork">90</dimen>
+    <dimen name="chowmein_veg">90</dimen>
+    <dimen name="hakka_noodle">80</dimen>
+    <dimen name="american_chopsuey">120</dimen>
+    <dimen name="chinese_chopsuey">120</dimen>
+    <dimen name="jerrys_special_chopsuey">120</dimen>
+    <dimen name="jerrys_special_chow">110</dimen>
+    <dimen name="noodle_soup_chicken">70</dimen>
+    <dimen name="noodle_soup_beef">70</dimen>
+    <dimen name="noodle_soup_pork">70</dimen>
+    <dimen name="mixed_rice_half">30</dimen>
+    <dimen name="mixed_rice_full">60</dimen>
+    <dimen name="rice_egg_top">70</dimen>
+    <dimen name="fried_rice_egg">120</dimen>
+    <dimen name="fried_rice_chicken">70</dimen>
+    <dimen name="fried_rice_beef">70</dimen>
+    <dimen name="fried_rice_pork">70</dimen>
+
+
 </resources>

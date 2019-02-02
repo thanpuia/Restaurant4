@@ -32,9 +32,6 @@ public class MainActivity extends AppCompatActivity
     int  fabCounter=2;
 
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,9 +51,7 @@ public class MainActivity extends AppCompatActivity
 
         recyclerView1.setAdapter(adapter);
 
-
-
-        fab = findViewById(R.id.fab);
+        fab =  findViewById(R.id.fab);
         fab1 =  findViewById(R.id.fab1);
         fab2 =  findViewById(R.id.fab2);
         fab3 =  findViewById(R.id.fab3);
@@ -95,6 +90,8 @@ public class MainActivity extends AppCompatActivity
 
             };
         });
+
+
         // Create the show or hide menu button
         button=findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
@@ -106,12 +103,14 @@ public class MainActivity extends AppCompatActivity
                     fab1.setVisibility(View.GONE);
                     fab2.setVisibility(View.GONE);
                     fab3.setVisibility(View.GONE);
+                    button.setText("Menu +");
                 }
                 else{
                     fab.setVisibility(View.VISIBLE);
                     fab1.setVisibility(View.VISIBLE);
                     fab2.setVisibility(View.VISIBLE);
                     fab3.setVisibility(View.VISIBLE);
+                    button.setText("Menu -");
                 }
                 fabCounter=fabCounter+1;
 
@@ -185,7 +184,6 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
 
     public void dismissListener(View view) {
         //Toast.makeText(this,"dfdf",Toast.LENGTH_LONG).show();

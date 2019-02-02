@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "644045861195",
+    "firebase_url": "https://jerry-s-restaurant-menu.firebaseio.com",
+    "project_id": "jerry-s-restaurant-menu",
+    "storage_bucket": "jerry-s-restaurant-menu.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:644045861195:android:25663076b64eba14",
+        "android_client_info": {
+          "package_name": "give.restaurant4"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "644045861195-vdqrarj9mtpuj0efe29m64hffpc2o9p7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgnhvhl0gqabC6QX5VuktC-u8cPWRTlf0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
