@@ -24,6 +24,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static give.restaurant4.FinalOrder.arrayAdapter;
 import static give.restaurant4.FinalOrder.listView;
@@ -53,7 +54,13 @@ public class MainActivity extends AppCompatActivity
 
         recyclerView1.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
 
-        recyclerView1.setAdapter(adapter);
+        //*****************************************************
+        //TEST AREA STARTS
+
+
+        //TEST AREA ENDS
+//*****************************************************
+       recyclerView1.setAdapter(adapter);
 
         fab =  findViewById(R.id.fab);
         fab1 =  findViewById(R.id.fab1);

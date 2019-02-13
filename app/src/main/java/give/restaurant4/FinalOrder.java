@@ -29,7 +29,6 @@ public class FinalOrder extends Activity {
     public static ListView listView;
     public static ArrayAdapter arrayAdapter;
     public static TextView orderTotalAmountTextView,deliveryAddress;
-    public FirebaseConnector firebaseConnector;
     public SharedPreferences sharedPreferences;
     public static String sharedUserName,sharedShopName,sharedUserAddress,sharedUserPhone;
     public static String userFullAddress;

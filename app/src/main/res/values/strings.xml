@@ -42,6 +42,8 @@
 <string name="fried_rice_chicken">Fried Rice Chicken</string>
 <string name="fried_rice_beef">Fried Rice Beef</string>
 <string name="fried_rice_pork">Fried Rice Pork</string>
+    <string name="chowmein_title">CHOWMEIN</string>
+    <string name="noodle_title">NOODLE</string>
 
     <string name="contact_us">Jerry\'s The Restaurant \nElectric Veng, Aizawl, Mizoram. \nNear Power House\n Mobile: 096158 09904</string>
 

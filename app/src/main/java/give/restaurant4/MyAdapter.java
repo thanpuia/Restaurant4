@@ -25,10 +25,13 @@ import android.widget.Toast;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
 import java.util.ArrayList;
+
+import io.github.luizgrp.sectionedrecyclerviewadapter.StatelessSection;
+
 import static give.restaurant4.FinalOrder.arrayAdapter;
 import static give.restaurant4.FinalOrder.listView;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
+public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder>, StatelessSection {
     public static ArrayList<String> orders = new ArrayList<>();
     public static ArrayList<Integer> orders_amount = new ArrayList<>();
 
@@ -42,8 +45,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
 
                                90,90,80,
                                120,120,80,
-                                70,70,70,
-                                 70};
+                                70,
+                                70,70, 70};
 
     public static Dialog settingDialog;
 
@@ -51,11 +54,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
              R.string.mixed_chow_half ,  R.string.mixed_chow_full ,     R.string.mushroom_chow ,
              R.string.chow_egg_top ,     R.string.fried_chow_egg ,     R.string.fried_chow_chicken ,
              R.string.fried_chow_beef ,  R.string.fried_chow_pork ,    R.string.veg_fried_chow ,
-             R.string.chowmein_egg ,     R.string.chowmein_chicken ,   R.string.chowmein_beef ,
+
+
+            R.string.chowmein_egg ,     R.string.chowmein_chicken ,   R.string.chowmein_beef ,
 
              R.string.chowmein_pork ,    R.string.chowmein_veg , R.string.hakka_noodle ,
              R.string.american_chopsuey ,R.string.chinese_chopsuey ,   R.string.jerrys_special_chopsuey ,
-             R.string.jerrys_special_chow ,R.string.noodle_soup_chicken ,R.string.noodle_soup_beef ,
+             R.string.jerrys_special_chow ,
+
+            R.string.noodle_soup_chicken ,R.string.noodle_soup_beef ,
              R.string.noodle_soup_pork};
 
     int[] menuImage = new int[]{
@@ -67,7 +74,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
             R.drawable.chowmein,    R.drawable.chowmein_egg,       R.drawable.chowmein_egg,
             R.drawable.american_chopseuy,R.drawable.chinese_chopsuey,   R.drawable.american_chopseuy,
             R.drawable.chinese_chopsuey,    R.drawable.rice,        R.drawable.noodles_3,
-            R.drawable.chow_egg_top,R.drawable.noodles_1,  R.drawable.noodles_2,
+            R.drawable.chow_egg_top,
+            R.drawable.noodles_1,  R.drawable.noodles_2,
             R.drawable.noodles_3};
 
      int elegentNumber=DEFAULT_ELEGANT_NUMBER;
@@ -203,6 +211,21 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
     @Override
     public int getItemCount() {
         return menuItemName.length;
+    }
+
+    @Override
+    public int getContentItemsTotal() {
+        return 0;
+    }
+
+    @Override
+    public RecyclerView.ViewHolder getItemViewHolder(View view) {
+        return null;
+    }
+
+    @Override
+    public void onBindItemViewHolder(RecyclerView.ViewHolder holder, int position) {
+
     }
 
     class MyHolder extends RecyclerView.ViewHolder {
